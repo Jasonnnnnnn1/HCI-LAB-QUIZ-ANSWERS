@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thingy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+    }
+    input {
+      width: 70%;
+      padding: 8px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    ul {
+      margin-top: 20px;
+      padding: 0;
+      list-style-type: none;
+    }
+    li {
+      background: #f8f9fa;
+      padding: 10px;
+      border: 1px solid #dee2e6;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>thingy</h2>
+    <input type="text" id="itemInput" placeholder="Enter an item">
+    <button onclick="addItem()">Add to List</button>
+    <p id="error" class="error"></p>
+    <ul id="itemList"></ul>
+  </div>
+
+  <script>
+    function addItem() {
+      const input = document.getElementById('itemInput');
+      const itemList = document.getElementById('itemList');
+      const error = document.getElementById('error');
+
+      if (input.value.trim() === "") {
+        error.textContent = "please fill in this field";
+        return;
+      }
+
+      error.textContent = "";
+      const newItem = document.createElement('li');
+      newItem.textContent = input.value;
+      itemList.appendChild(newItem);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
